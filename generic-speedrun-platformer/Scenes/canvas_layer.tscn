@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://donqc1hmlqdc8"]
+
+[ext_resource type="Script" uid="uid://bkjpsexdyuqcp" path="res://Scripts/Panel.gd" id="1_5oaki"]
+[ext_resource type="FontFile" uid="uid://dm68tj5v0hcrg" path="res://Resourses/LazyFox Pixel Font 2.ttf" id="1_q85f0"]
+[ext_resource type="Texture2D" uid="uid://wfetx6xksvlv" path="res://Assets/Pixel Adventure 1/Free/Items/Fruits/Strawberry.png" id="3_p1mel"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("3_p1mel")
+region = Rect2(520, 8, 16, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1479836532]
+
+[node name="Panel" type="Panel" parent="." unique_id=139853962]
+offset_right = 208.0
+offset_bottom = 64.0
+script = ExtResource("1_5oaki")
+
+[node name="Label" type="Label" parent="Panel" unique_id=891769708]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 35.0
+offset_right = 166.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.9999997, 0.20587829, 0.21328634, 1)
+theme_override_colors/font_shadow_color = Color(0.7885046, 7.3351264e-05, 0.17180198, 1)
+theme_override_colors/font_outline_color = Color(0.36862746, 0, 0.11372549, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_q85f0")
+text = "Strawberry: "
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=900410594]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_g4v7s")
+
+[node name="TimeLabel" type="Label" parent="Panel" unique_id=19688066]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 222.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.32156864, 0.32156864, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.23529412, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_q85f0")
+theme_override_font_sizes/font_size = 32
+text = "00:00.000"

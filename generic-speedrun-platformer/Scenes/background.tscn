@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tqedxhn13vie"]
+
+[ext_resource type="Texture2D" uid="uid://dbarf4acpwku2" path="res://Assets/Pixel Adventure 1/Free/Background/Purple.png" id="1_sn1xx"]
+
+[node name="Background" type="Node" unique_id=893789287]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1976132210]
+z_index = -1
+repeat_size = Vector2(64, 64)
+autoscroll = Vector2(16, -16)
+repeat_times = 21
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=302557928]
+texture = ExtResource("1_sn1xx")
