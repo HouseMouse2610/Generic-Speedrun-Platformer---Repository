@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://71coipc0e671" path="res://Scripts/level_1.gd" id="1_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://c0ns5lm7muo2t" path="res://Scenes/tilemap.tscn" id="1_vk57k"]
-[ext_resource type="PackedScene" uid="uid://7nrl5ren01bk" path="res://Scenes/character_body_2d.tscn" id="2_8ffim"]
 [ext_resource type="PackedScene" uid="uid://tqedxhn13vie" path="res://Scenes/background.tscn" id="3_6444e"]
 [ext_resource type="PackedScene" uid="uid://donqc1hmlqdc8" path="res://Scenes/canvas_layer.tscn" id="5_6444e"]
 
@@ -11,9 +10,9 @@ script = ExtResource("1_7p6j4")
 
 [node name="Tilemap" parent="." unique_id=1453951224 instance=ExtResource("1_vk57k")]
 
-[node name="CharacterBody2D" parent="." unique_id=1252964145 instance=ExtResource("2_8ffim")]
-position = Vector2(1383, -370)
-
 [node name="Background" parent="." unique_id=893789287 instance=ExtResource("3_6444e")]
 
 [node name="CanvasLayer" parent="." unique_id=1479836532 instance=ExtResource("5_6444e")]
+
+[node name="PlayerStart" type="Marker2D" parent="." unique_id=1218840121]
+position = Vector2(0, -16)

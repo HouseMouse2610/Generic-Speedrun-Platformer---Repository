@@ -17,16 +17,16 @@ script = ExtResource("1_5oaki")
 
 [node name="Label" type="Label" parent="Panel" unique_id=891769708]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 35.0
-offset_right = 166.0
-offset_bottom = 58.0
-theme_override_colors/font_color = Color(0.9999997, 0.20587829, 0.21328634, 1)
+offset_left = 40.0
+offset_right = 198.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.7885046, 7.3351264e-05, 0.17180198, 1)
 theme_override_colors/font_outline_color = Color(0.36862746, 0, 0.11372549, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_q85f0")
-text = "Strawberry: "
+theme_override_font_sizes/font_size = 32
+text = "x 10"
 
 [node name="TextureRect" type="TextureRect" parent="Panel" unique_id=900410594]
 layout_mode = 0
@@ -36,9 +36,10 @@ texture = SubResource("AtlasTexture_g4v7s")
 
 [node name="TimeLabel" type="Label" parent="Panel" unique_id=19688066]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 222.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 190.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.32156864, 0.32156864, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0.23529412, 1)

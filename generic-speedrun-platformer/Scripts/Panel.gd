@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 		time += delta
 
 func atualize_label():
-	label.text = str("Strawberry: ") + str(level.berry)
+	label.text = str("x ") + str(level.berry)
 	@warning_ignore("integer_division")
 	var minutes = int(time) / 60
 	var seconds = int(time) % 60

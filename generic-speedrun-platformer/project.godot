@@ -15,6 +15,10 @@ run/main_scene="uid://bxgg7jlct2o18"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*uid://cuu4rm168kuvt"
+
 [display]
 
 window/size/viewport_width=640
@@ -22,6 +26,10 @@ window/size/viewport_height=320
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+Trampoline=""
 
 [input]
 
