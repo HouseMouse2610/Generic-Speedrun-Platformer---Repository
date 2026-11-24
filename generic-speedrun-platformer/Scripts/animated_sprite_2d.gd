@@ -24,4 +24,9 @@ func update_sprite():
 
 func _on_animation_finished() -> void:
 	if p.current_state == p.state.DEAD:
-		get_tree().reload_current_scene()
+		if GameState.has_checkpoint:
+			p.position = GameState.checkpoint_position
+			p.current_state = p.state.IDLE
+		else:
+			GameState.time = 0
+			get_tree().reload_current_scene()

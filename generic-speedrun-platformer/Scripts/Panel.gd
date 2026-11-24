@@ -1,23 +1,24 @@
+class_name UI
 extends Panel
 
 @onready var label : Label = $Label
 @onready var timelabel : Label = $TimeLabel
 @onready var level = $"../.."
-var started : bool = false
-var time : float = 0.0
 
 func _physics_process(delta: float) -> void:
 	atualize_label()
-	if started:
-		time += delta
+	if GameState.started:
+		GameState.time += delta * 1000
 
 func atualize_label():
-	label.text = str("x ") + str(level.berry)
+	label.text = str("x") + str(level.berry)
+	timer()
+
+func timer():
+	var miliseconds = int(GameState.time) % 1000
 	@warning_ignore("integer_division")
-	var minutes = int(time) / 60
-	var seconds = int(time) % 60
-	timelabel.text = str(minutes) + str(":") + str(seconds)
+	var seconds = int(GameState.time) / 1000 % 60
+	@warning_ignore("integer_division")
+	var minutes = int(GameState.time) / 60000
+	timelabel.text = str("%02d" % minutes) + str(":") + str("%02d" % seconds) + str(".") + str("%03d" % miliseconds)
 	
-	if not started:
-		if Input.is_action_just_pressed("Right"):
-			started = true

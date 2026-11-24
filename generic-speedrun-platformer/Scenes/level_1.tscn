@@ -4,6 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://c0ns5lm7muo2t" path="res://Scenes/tilemap.tscn" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://tqedxhn13vie" path="res://Scenes/background.tscn" id="3_6444e"]
 [ext_resource type="PackedScene" uid="uid://donqc1hmlqdc8" path="res://Scenes/canvas_layer.tscn" id="5_6444e"]
+[ext_resource type="Script" uid="uid://cm8k2jsc7b0w1" path="res://Scripts/start_area.gd" id="5_evi0p"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
+normal = Vector2(-1, 0)
+distance = -80.0
 
 [node name="Level 1" type="Node2D" unique_id=1182513815]
 script = ExtResource("1_7p6j4")
@@ -14,5 +19,18 @@ script = ExtResource("1_7p6j4")
 
 [node name="CanvasLayer" parent="." unique_id=1479836532 instance=ExtResource("5_6444e")]
 
+[node name="Label" parent="CanvasLayer/Panel" parent_id_path=PackedInt32Array(1479836532, 139853962) index="0" unique_id=891769708]
+theme_override_colors/font_shadow_color = Color(0.7882353, 0, 0.17254902, 1)
+
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=1218840121]
 position = Vector2(0, -16)
+
+[node name="StartArea" type="Area2D" parent="." unique_id=1691401899]
+script = ExtResource("5_evi0p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartArea" unique_id=403848168]
+shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
+[connection signal="body_entered" from="StartArea" to="StartArea" method="_on_body_entered"]
+
+[editable path="CanvasLayer"]

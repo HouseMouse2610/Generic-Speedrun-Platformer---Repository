@@ -17,6 +17,7 @@ func _ready() -> void:
 	else:
 		new_player.global_position = start_marker.global_position
 	call_deferred("connect_signals")
+	GameState.started = false
 
 func connect_signals():
 	for child in colectables.get_children():

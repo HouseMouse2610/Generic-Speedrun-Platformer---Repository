@@ -6,6 +6,9 @@ extends CharacterBody2D
 var direction : float = 0
 var jump_count : int
 
+const ghost_interval := 0.075
+var ghost_timer := 0.0
+
 @export var speed : float = 250
 @export var aceleration : float = 500.0
 @export var friction : float = 1000
@@ -18,13 +21,15 @@ var jump_count : int
 enum state{IDLE, RUN, JUMP, FALL, WALL_SLIDE, DEAD}
 @export var current_state = state.IDLE
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("Left", "Right")
 	change_state()
-	run_state(_delta)
+	run_state(delta)
 	sprite.update_sprite()
 	
 	move_and_slide()
+	
+	spawn_trail(delta)
 
 func run_state(delta) -> void:
 	match current_state:
@@ -100,3 +105,21 @@ func move_player_y(delta):
 			velocity.y += gravity * fall_mult * delta
 		else:
 			velocity.y += gravity * delta
+
+func ghost_trail():
+	var ghost = Sprite2D.new()
+	ghost.set_script(load("res://Scripts/ghost_trail.gd"))
+	ghost.texture = sprite.sprite_frames.get_frame_texture(
+		sprite.animation, sprite.get_frame()
+	)
+	ghost.position = global_position
+	ghost.flip_h = sprite.flip_h
+	ghost.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	ghost.z_index = -1
+	get_parent().add_child(ghost)
+
+func spawn_trail(delta):
+	ghost_timer -= delta
+	if ghost_timer <= 0:
+		ghost_trail()
+		ghost_timer = ghost_interval

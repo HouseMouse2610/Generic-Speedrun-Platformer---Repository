@@ -26,7 +26,7 @@ theme_override_colors/font_outline_color = Color(0.36862746, 0, 0.11372549, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_q85f0")
 theme_override_font_sizes/font_size = 32
-text = "x 10"
+text = "x10"
 
 [node name="TextureRect" type="TextureRect" parent="Panel" unique_id=900410594]
 layout_mode = 0

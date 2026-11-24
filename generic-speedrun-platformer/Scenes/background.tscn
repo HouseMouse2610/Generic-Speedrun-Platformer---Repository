@@ -5,7 +5,7 @@
 [node name="Background" type="Node" unique_id=893789287]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1976132210]
-z_index = -1
+z_index = -5
 repeat_size = Vector2(64, 64)
 autoscroll = Vector2(16, -16)
 repeat_times = 21
