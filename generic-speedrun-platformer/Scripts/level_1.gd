@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var colectables : TileMapLayer = $Tilemap/Scenes
 @onready var start_marker : Marker2D = $PlayerStart
+@onready var panel2 = $CanvasLayer/Panel2
 
 var berry : int = 0
 
@@ -11,7 +12,6 @@ const PLAYER_SCENE = preload("res://Scenes/character_body_2d.tscn")
 func _ready() -> void:
 	var new_player = PLAYER_SCENE.instantiate()
 	add_child(new_player)
-
 	if GameState.has_checkpoint:
 		new_player.global_position = GameState.checkpoint_position
 	else:

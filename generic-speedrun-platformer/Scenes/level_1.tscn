@@ -19,9 +19,6 @@ script = ExtResource("1_7p6j4")
 
 [node name="CanvasLayer" parent="." unique_id=1479836532 instance=ExtResource("5_6444e")]
 
-[node name="Label" parent="CanvasLayer/Panel" parent_id_path=PackedInt32Array(1479836532, 139853962) index="0" unique_id=891769708]
-theme_override_colors/font_shadow_color = Color(0.7882353, 0, 0.17254902, 1)
-
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=1218840121]
 position = Vector2(0, -16)
 
@@ -32,5 +29,3 @@ script = ExtResource("5_evi0p")
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
 [connection signal="body_entered" from="StartArea" to="StartArea" method="_on_body_entered"]
-
-[editable path="CanvasLayer"]

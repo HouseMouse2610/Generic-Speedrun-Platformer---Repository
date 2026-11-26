@@ -4,7 +4,9 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 
 var direction : float = 0
+var last_direction : float
 var jump_count : int
+var wall_dir = get_wall_normal()
 
 const ghost_interval := 0.075
 var ghost_timer := 0.0
@@ -16,7 +18,7 @@ var ghost_timer := 0.0
 @export var wall_gravity : float = 32.0
 @export var wall_impulse : float = 128.0
 @export var gravity : float = 500.0
-@export var fall_mult : float = 2.0
+@export var fall_mult : float = 1.5
 
 enum state{IDLE, RUN, JUMP, FALL, WALL_SLIDE, DEAD}
 @export var current_state = state.IDLE
@@ -29,7 +31,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	spawn_trail(delta)
+	if direction != 0:
+		last_direction = direction
+	
+	if current_state != state.DEAD:
+		spawn_trail(delta)
 
 func run_state(delta) -> void:
 	match current_state:
@@ -54,7 +60,7 @@ func run_state(delta) -> void:
 
 func change_state():
 	if current_state != state.DEAD:
-		if not is_on_floor() and is_on_wall() and velocity.y > 0:
+		if not is_on_floor() and is_on_wall() and velocity.y > 0 and wall_dir.x != direction:
 			current_state = state.WALL_SLIDE
 		elif velocity.x == 0 and is_on_floor():
 			current_state = state.IDLE
@@ -79,14 +85,14 @@ func move_player_x(delta):
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 
 func move_player_y(delta):
-	if is_on_floor() or is_on_wall():
+	if is_on_floor() or is_on_wall() and wall_dir.x != direction:
 		jump_count = 2
 	if not is_on_floor() and jump_count == 2:
 		jump_count = 1
 	
 	if current_state == state.WALL_SLIDE:
 		if Input.is_action_just_pressed("Jump"):
-			velocity.x = wall_impulse * -direction
+			velocity.x = wall_impulse * -last_direction
 			velocity.y += jump_velocity
 		elif velocity.y > 0:
 			velocity.y = wall_gravity
@@ -114,7 +120,7 @@ func ghost_trail():
 	)
 	ghost.position = global_position
 	ghost.flip_h = sprite.flip_h
-	ghost.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	ghost.modulate = Color("f2242bc8")
 	ghost.z_index = -1
 	get_parent().add_child(ghost)
 

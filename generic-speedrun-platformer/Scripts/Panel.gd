@@ -5,7 +5,7 @@ extends Panel
 @onready var timelabel : Label = $TimeLabel
 @onready var level = $"../.."
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	atualize_label()
 	if GameState.started:
 		GameState.time += delta * 1000

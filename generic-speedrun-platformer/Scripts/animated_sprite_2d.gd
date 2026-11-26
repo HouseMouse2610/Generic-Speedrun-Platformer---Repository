@@ -21,12 +21,13 @@ func update_sprite():
 	if p.direction != 0:
 		flip_h = (p.direction < 0) 
 
-
 func _on_animation_finished() -> void:
 	if p.current_state == p.state.DEAD:
 		if GameState.has_checkpoint:
 			p.position = GameState.checkpoint_position
 			p.current_state = p.state.IDLE
+			GameState.died.emit()
 		else:
 			GameState.time = 0
+			GameState.deaths = 0
 			get_tree().reload_current_scene()

@@ -5,10 +5,10 @@
 [node name="Background" type="Node" unique_id=893789287]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1976132210]
-z_index = -5
+z_index = -10
 repeat_size = Vector2(64, 64)
 autoscroll = Vector2(16, -16)
-repeat_times = 21
+repeat_times = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=302557928]
 texture = ExtResource("1_sn1xx")
